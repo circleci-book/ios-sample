@@ -1,4 +1,4 @@
-git_url("https://github.com/circleci-book/ios-sample-matchfile")
+git_url("git@circleci-book/ios-sample-matchfile")
 
 type("development") # The default type, can be: appstore, adhoc, enterprise or development
 
