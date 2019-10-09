@@ -38,6 +38,9 @@ jobs:
   generate-ipa:
     executor: macos-executor
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "08:4c:d5:a7:cd:3b:89:fb:35:89:2b:e5:b5:8e:1a:c2"
       - checkout
       - restore_cache:
           key: gems-v1-{{ checksum "Gemfile.lock" }}
