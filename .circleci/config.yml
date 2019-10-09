@@ -69,6 +69,7 @@ jobs:
         description: 'lane to run'
         type: string
     steps:
+      - run: cd /tmp; git clone git@github.com:circleci-book/ios-sample-matchfile.git
       - checkout
       - bundle-install
       - run:
