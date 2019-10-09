@@ -1,6 +1,4 @@
 version: 2.1
-orbs:
-  codecov: codecov/codecov@1.0.5
 
 executors:
   macos:
@@ -80,8 +78,6 @@ jobs:
           path: output
       - store_test_results:
           path: output/scan
-      - codecov/upload:
-          file: output/slather/cobertura.xml
 
   generate-ipa:
     executor: macos
