@@ -1,15 +1,46 @@
-# ios-game
+fastlane documentation
+================
+# Installation
 
-[![CircleCI](https://circleci.com/gh/CircleCI-Public/circleci-demo-ios/tree/master.svg?style=svg)](https://circleci.com/gh/CircleCI-Public/circleci-demo-ios/tree/master)
+Make sure you have the latest version of the Xcode command line tools installed:
 
-## Setup
+```
+xcode-select --install
+```
 
-1. `bundle install`
-1. Add your team data to `fastlane/Appfile`
-1. `bundle exec fastlane scan` to build the app and run tests
-1. `bundle exec fastlane match init` to set up code signing via Fastlane
-   Match
-1. Push the changes
-1. Create a CircleCI project for the repository
-1. Edit the `.circleci/config.yml` file as needed
-1. Done
+Install _fastlane_ using
+```
+[sudo] gem install fastlane -NV
+```
+or alternatively using `brew cask install fastlane`
+
+# Available Actions
+## iOS
+### ios test
+```
+fastlane ios test
+```
+Runs all the tests
+### ios adhoc
+```
+fastlane ios adhoc
+```
+Ad-hoc build
+### ios beta
+```
+fastlane ios beta
+```
+Submit a new Beta Build to Apple TestFlight
+
+This will also make sure the profile is up to date
+### ios release
+```
+fastlane ios release
+```
+Deploy a new version to the App Store
+
+----
+
+This README.md is auto-generated and will be re-generated every time [fastlane](https://fastlane.tools) is run.
+More information about fastlane can be found on [fastlane.tools](https://fastlane.tools).
+The documentation of fastlane can be found on [docs.fastlane.tools](https://docs.fastlane.tools).
