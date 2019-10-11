@@ -1,7 +1,7 @@
 version: 2.1
 
 executors:
-  macos:
+  macos-executor:
     macos:
       xcode: << parameters.xcode_version >>
     parameters:
@@ -21,7 +21,7 @@ executors:
 
 jobs:
   test:
-    executor: macos
+    executor: macos-executor
     steps:
       - run: cd /tmp; git clone git@github.com:circleci-book/ios-sample-matchfile.git
       - checkout
@@ -43,7 +43,7 @@ jobs:
           path: output/scan
 
   generate-ipa:
-    executor: macos
+    executor: macos-executor
     steps:
       - checkout
       - restore_cache:
