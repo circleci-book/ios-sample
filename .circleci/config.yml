@@ -19,47 +19,6 @@ executors:
     working_directory: /Users/distiller/project
     shell: /bin/bash --login -o pipefail
 
-commands:
-  bundle-install:
-    description: Install gems with Bundler
-    parameters:
-      bundle_path:
-        description: 'the bundle packages to store'
-        default: 'vendor/bundle'
-        type: string
-      cache_key:
-        description: 'The cache key to use'
-        default: gems-v1
-        type: string
-    steps:
-      - restore_cache:
-          key: << parameters.cache_key >>-{{ checksum "Gemfile.lock" }}
-      - run:
-          name: 'Install gems with Bundler'
-          command: bundle install --path << parameters.bundle_path >> --clean
-      - save_cache:
-          key: << parameters.cache_key >>-{{ checksum "Gemfile.lock" }}
-          paths:
-            - << parameters.bundle_path >>
-
-  load-cache:
-    description: Load cached RubyGems
-    parameters:
-      bundle_path:
-        description: 'the bundle packages to store'
-        default: 'vendor/bundle'
-        type: string
-      cache_key:
-        description: 'The cache key to use'
-        default: gems-v1
-        type: string
-    steps:
-      - restore_cache:
-          key: << parameters.cache_key >>-{{ checksum "Gemfile.lock" }}
-      - run:
-          name: 'Install gems with Bundler'
-          command: bundle install --path << parameters.bundle_path >> --clean
-
 jobs:
   test:
     executor: macos
@@ -71,7 +30,15 @@ jobs:
     steps:
       - run: cd /tmp; git clone git@github.com:circleci-book/ios-sample-matchfile.git
       - checkout
-      - bundle-install
+      - restore_cache:
+          key: gems-v1-{{ checksum "Gemfile.lock" }}
+      - run:
+          name: 'Install gems with Bundler'
+          command: bundle install --path vendor/bundle --clean
+      - save_cache:
+          key: gems-v1>-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
       - run:
           name: Fastlane
           command: bundle exec fastlane << parameters.fastlane_lane >>
@@ -89,7 +56,11 @@ jobs:
         type: string
     steps:
       - checkout
-      - load-cache
+      - restore_cache:
+          key: gems-v1-{{ checksum "Gemfile.lock" }}
+      - run:
+          name: 'Install gems with Bundler'
+          command: bundle install --path vendor/bundle --clean
       - run:
           name: Fastlane
           command: bundle exec fastlane << parameters.fastlane_lane >>
