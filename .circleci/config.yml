@@ -67,13 +67,18 @@ workflows:
   build-test-adhoc:
     jobs:
       - test:
+          name: test_10-1-0
+          xcode_version: "10.1.0"
+      - test:
+          name: test_11-1-0
           xcode_version: "11.1.0"
       - generate-ipa:
           filters:
             branches:
               only: development
           requires:
-            - test
+            - test_10-1-0
+            - test_11-1-0
       #- beta:
           #filters:
             #branches:
