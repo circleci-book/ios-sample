@@ -61,6 +61,10 @@ workflows:
   version: 2
   build-test-adhoc:
     jobs:
+      - test:
+          xcode_version: "10.1.0"
+      - test:
+          xcode_version: "11.1.0"
       - test
       - generate-ipa:
           filters:
