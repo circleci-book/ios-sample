@@ -30,7 +30,7 @@ jobs:
             - vendor/bundle
       - run:
           name: Fastlane
-          command: bundle exec fastlane test
+          command: bundle exec fastlane scan
       - store_artifacts:
           path: output
       - store_test_results:
