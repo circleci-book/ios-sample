@@ -10,7 +10,6 @@ executors:
       LC_ALL: en_US.UTF-8
       LANG: en_US.UTF-8
       FL_OUTPUT_DIR: output
-      FL_SLATHER_OUTPUT_DIRECTORY: output/slather
     working_directory: /Users/distiller/project
 
 jobs:
