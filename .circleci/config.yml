@@ -2,12 +2,12 @@ version: 2.1
 
 executors:
   macos-executor:
-    macos:
-      xcode: << parameters.xcode_version >>
     parameters:
       xcode_version:
         description: 'Xcode version'
         type: string
+    macos:
+      xcode: << parameters.xcode_version >>
     environment:
       XCODE_PATH: /Applications/Xcode.app
       FASTLANE_SKIP_UPDATE_CHECK: 1
@@ -16,7 +16,6 @@ executors:
       FL_OUTPUT_DIR: output
       FL_SLATHER_OUTPUT_DIRECTORY: output/slather
     working_directory: /Users/distiller/project
-    shell: /bin/bash --login -o pipefail
 
 jobs:
   test:
