@@ -5,6 +5,7 @@ executors:
     parameters:
       xcode_version:
         description: 'Xcode version'
+        default: "11.1.0"
         type: string
     macos:
       xcode: << parameters.xcode_version >>
