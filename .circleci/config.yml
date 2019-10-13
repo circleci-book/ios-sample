@@ -2,13 +2,8 @@ version: 2.1
 
 executors:
   macos-executor:
-    parameters:
-      xcode_version:
-        description: 'Xcode version'
-        default: "11.1.0"
-        type: string
     macos:
-      xcode: << parameters.xcode_version >>
+      xcode: "11.1.0"
     environment:
       XCODE_PATH: /Applications/Xcode.app
       FASTLANE_SKIP_UPDATE_CHECK: 1
@@ -20,12 +15,8 @@ executors:
 
 jobs:
   test:
-    parameters:
-      xcode_version:
-        type: string
     executor:
       name: macos-executor
-      xcode_version: << parameters.xcode_version >>
     steps:
       - run: cd /tmp; git clone git@github.com:circleci-book/ios-sample-matchfile.git
       - checkout
@@ -65,19 +56,13 @@ workflows:
   version: 2
   build-test-adhoc:
     jobs:
-      - test:
-          name: test_10-1-0
-          xcode_version: "10.1.0"
-      - test:
-          name: test_11-1-0
-          xcode_version: "11.1.0"
+      - test
       - generate-ipa:
           filters:
             branches:
               only: development
           requires:
-            - test_10-1-0
-            - test_11-1-0
+            - test
       #- beta:
           #filters:
             #branches:
