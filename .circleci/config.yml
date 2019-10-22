@@ -41,10 +41,10 @@ jobs:
       #- add_ssh_keys:
       #    fingerprints:
       #      - "08:4c:d5:a7:cd:3b:89:fb:35:89:2b:e5:b5:8e:1a:c2"
+      - checkout
       - add_ssh_keys:
           fingerprints:
             - "f1:c9:e1:35:7d:92:67:d4:e8:b7:54:7e:15:36:1c:5a"
-      - checkout
       - restore_cache:
           key: gems-v1-{{ checksum "Gemfile.lock" }}
       - run:
