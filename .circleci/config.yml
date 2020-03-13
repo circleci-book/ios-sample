@@ -42,6 +42,9 @@ jobs:
     executor: macos-executor
     steps:
       - checkout
+      - run:
+          name: Set Ruby Version
+          command:  echo "ruby-2.6" > ~/.ruby-version
       - add_ssh_keys:
           fingerprints:
             - "f1:c9:e1:35:7d:92:67:d4:e8:b7:54:7e:15:36:1c:5a"
