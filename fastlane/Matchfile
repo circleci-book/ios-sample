@@ -1,4 +1,4 @@
-git_url("git@github.com:circleci-book/ios-sample-certificates.git")
+git_url("git@github.com:kimh/ios-sample-certificates.git")
 
 storage_mode("git")
 
