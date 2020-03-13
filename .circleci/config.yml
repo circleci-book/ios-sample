@@ -47,7 +47,7 @@ jobs:
           command:  echo "ruby-2.6" > ~/.ruby-version
       - add_ssh_keys:
           fingerprints:
-            - "f1:c9:e1:35:7d:92:67:d4:e8:b7:54:7e:15:36:1c:5a"
+            - "00:1e:a3:c7:34:c0:f0:39:95:32:94:a5:42:af:cd:8c"
       - restore_cache:
           key: gems-v1-{{ checksum "Gemfile.lock" }}
       - run:
