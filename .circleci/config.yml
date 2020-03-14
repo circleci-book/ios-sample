@@ -18,11 +18,11 @@ jobs:
       name: macos-executor
     steps:
       - checkout
+      - restore_cache:
+          key: gems-v1-{{ checksum "Gemfile.lock" }}
       - run:
           name: Set Ruby Version
           command:  echo "ruby-2.6" > ~/.ruby-version
-      - restore_cache:
-          key: gems-v1-{{ checksum "Gemfile.lock" }}
       - run:
           name: 'Install gems with Bundler'
           command: bundle install --path vendor/bundle --clean
@@ -42,14 +42,14 @@ jobs:
     executor: macos-executor
     steps:
       - checkout
-      - run:
-          name: Set Ruby Version
-          command:  echo "ruby-2.6" > ~/.ruby-version
       - add_ssh_keys:
           fingerprints:
             - "00:1e:a3:c7:34:c0:f0:39:95:32:94:a5:42:af:cd:8c"
       - restore_cache:
           key: gems-v1-{{ checksum "Gemfile.lock" }}
+      - run:
+          name: Set Ruby Version
+          command:  echo "ruby-2.6" > ~/.ruby-version
       - run:
           name: 'Install gems with Bundler'
           command: bundle install --path vendor/bundle --clean
@@ -67,9 +67,3 @@ workflows:
       - generate-ipa:
           requires:
             - test
-      #- beta:
-          #filters:
-            #branches:
-              #only: master
-          #requires:
-            #- build-and-test
