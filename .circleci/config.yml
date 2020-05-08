@@ -13,7 +13,7 @@ executors:
     working_directory: /Users/distiller/project
 
 jobs:
-  build_and_test:
+  build-and-test:
     executor:
       name: macos-executor
     steps:
@@ -63,7 +63,7 @@ workflows:
   version: 2
   build-test-adhoc:
     jobs:
-      - build_and_test
+      - build-and-test
       - generate-ipa:
           requires:
-            - build_and_test
+            - build-and-test
