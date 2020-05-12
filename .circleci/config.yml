@@ -21,17 +21,17 @@ jobs:
       - restore_cache:
           key: gems-v1-{{ checksum "Gemfile.lock" }}
       - run:
-          name: Set Ruby Version
+          name: Rubyのバージョン指定
           command:  echo "ruby-2.6" > ~/.ruby-version
       - run:
-          name: 'Install gems with Bundler'
+          name: Gemのインストール
           command: bundle install --path vendor/bundle --clean
       - save_cache:
           key: gems-v1-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
       - run:
-          name: Fastlane
+          name: テスト実行
           command: bundle exec fastlane scan
       - store_artifacts:
           path: output
@@ -48,13 +48,13 @@ jobs:
       - restore_cache:
           key: gems-v1-{{ checksum "Gemfile.lock" }}
       - run:
-          name: Set Ruby Version
+          name: Rubyのバージョン指定
           command:  echo "ruby-2.6" > ~/.ruby-version
       - run:
-          name: 'Install gems with Bundler'
+          name: Gemのインストール
           command: bundle install --path vendor/bundle --clean
       - run:
-          name: Fastlane
+          name: AdHoc IPAの作成
           command: bundle exec fastlane adhoc
       - store_artifacts:
           path: output/Game.ipa
