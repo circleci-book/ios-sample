@@ -1,6 +1,9 @@
-# ios-game
+# ios-sample
 
-[![CircleCI](https://circleci.com/gh/CircleCI-Public/circleci-demo-ios/tree/master.svg?style=svg)](https://circleci.com/gh/CircleCI-Public/circleci-demo-ios/tree/master)
+[![circleci-book](https://circleci.com/gh/circleci-book/ios-sample.svg?style=svg)](https://circleci.com/gh/circleci-book/ios-sample)
+
+<CircleCIではじめるCI/CD入門>の8章「iOS（macOS）」におけるサンプルコードです。
+
 
 ## Setup
 
