@@ -2,7 +2,7 @@
 
 [![circleci-book](https://circleci.com/gh/circleci-book/ios-sample.svg?style=svg)](https://circleci.com/gh/circleci-book/ios-sample)
 
-<CircleCIではじめるCI/CD入門>の8章「iOS（macOS）」におけるサンプルコードです。
+[CircleCI実践入門](https://gihyo.jp/book/2020/978-4-297-11411-4)の8章「iOS（macOS）」におけるサンプルコードです。
 
 
 ## Setup
